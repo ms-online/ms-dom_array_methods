@@ -40,6 +40,12 @@ function sortByRichest() {
   updateDOM();
 }
 
+// showMillionaires
+function showMillionaires() {
+  data = data.filter(user => user.money > 1000000);
+  updateDOM();
+}
+
 // 添加随机生成对象到data数组
 function addData(obj) {
   data.push(obj);
@@ -70,3 +76,4 @@ function formatMoney(number) {
 addUserBtn.addEventListener("click", getRandomUser);
 doubleBtn.addEventListener("click", doubleMoney);
 sortBtn.addEventListener("click", sortByRichest);
+showMillionairesBtn.addEventListener("click", showMillionaires);
