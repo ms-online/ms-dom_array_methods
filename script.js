@@ -28,4 +28,28 @@ async function getRandomUser() {
 // 添加随机生成对象到data数组
 function addData(obj) {
   data.push(obj);
+  updateDOM();
 }
+
+// updateDOM
+function updateDOM(providedData = data) {
+  // clear main div
+  main.innerHTML = " <h2><strong>Person</strong>Wealth</h2>";
+
+  providedData.forEach(item => {
+    const element = document.createElement("div");
+    element.classList.add("person");
+    element.innerHTML = `<strong>${item.name}</strong> ${formatMoney(
+      item.money
+    )}`;
+    main.appendChild(element);
+  });
+}
+
+// 转换为货币格式
+function formatMoney(number) {
+  return "$" + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+}
+
+// 事件监听
+addUserBtn.addEventListener("click", getRandomUser);
