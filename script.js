@@ -11,8 +11,8 @@ let data = [];
 getRandomUser();
 getRandomUser();
 getRandomUser();
-// Fetch random user and add money
 
+// Fetch random user and add money
 async function getRandomUser() {
   const res = await fetch("https://randomuser.me/api");
   const data = await res.json();
@@ -23,6 +23,14 @@ async function getRandomUser() {
     money: Math.floor(Math.random() * 1000000)
   };
   addData(newUser);
+}
+
+// doubleMoney
+function doubleMoney() {
+  data = data.map(user => {
+    return { ...user, money: user.money * 2 };
+  });
+  updateDOM();
 }
 
 // 添加随机生成对象到data数组
@@ -53,3 +61,4 @@ function formatMoney(number) {
 
 // 事件监听
 addUserBtn.addEventListener("click", getRandomUser);
+doubleBtn.addEventListener("click", doubleMoney);
