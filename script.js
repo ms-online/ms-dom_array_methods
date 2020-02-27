@@ -33,6 +33,13 @@ function doubleMoney() {
   updateDOM();
 }
 
+// sortByRichest
+function sortByRichest() {
+  data.sort((a, b) => b.money - a.money);
+
+  updateDOM();
+}
+
 // 添加随机生成对象到data数组
 function addData(obj) {
   data.push(obj);
@@ -62,3 +69,4 @@ function formatMoney(number) {
 // 事件监听
 addUserBtn.addEventListener("click", getRandomUser);
 doubleBtn.addEventListener("click", doubleMoney);
+sortBtn.addEventListener("click", sortByRichest);
