@@ -46,6 +46,18 @@ function showMillionaires() {
   updateDOM();
 }
 
+// calculateWealth
+function calculateWealth() {
+  const wealth = data.reduce((acc, user) => (acc += user.money), 0);
+  // console.log(formatMoney(wealth));
+
+  const wealthEl = document.createElement("div");
+  wealthEl.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(
+    wealth
+  )}</strong></h3>`;
+  main.appendChild(wealthEl);
+}
+
 // 添加随机生成对象到data数组
 function addData(obj) {
   data.push(obj);
@@ -77,3 +89,4 @@ addUserBtn.addEventListener("click", getRandomUser);
 doubleBtn.addEventListener("click", doubleMoney);
 sortBtn.addEventListener("click", sortByRichest);
 showMillionairesBtn.addEventListener("click", showMillionaires);
+calculateWealthBtn.addEventListener("click", calculateWealth);
